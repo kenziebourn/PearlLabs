@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Products</h1>
+    
+    <div id="browse">
+        <table border="1" cellpadding="5">
+        <caption>Information for all products</caption>
+          <tr>
+            <th>Product ID</th>
+            <th>Product Type ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Product Price ($)</th>
+            <th>Quantity per Unit</th>
+          </tr>
+          <tr>
+            <td align="right">1</td>
+            <td align="right">101</td>
+            <td>Wintermelon Syrup</td>
+            <td>Shelf life: 1 year, net weight: 5 lbs</td>
+            <td align="right">15.00</td>
+            <td align="right">1</td>
+          </tr>
+          <tr>
+            <td align="right">2</td>
+            <td align="right">101</td>
+            <td>Strawberry Syrup</td>
+            <td>Shelf life: 1 year, net weight: 5 lbs</td>
+            <td align="right">15.00</td>
+            <td align="right">1</td>
+          </tr>
+          <tr>
+            <td align="right">3</td>
+            <td align="right">103</td>
+            <td>12oz Cups (1000)</td>
+            <td>Floral design, gross weight: 15 lbs</td>
+            <td align="right">70.50</td>
+            <td align="right">1000</td>
+          </tr>
+          <tr>
+            <td align="right">4</td>
+            <td align="right">103</td>
+            <td>24 oz Cups (500)</td>
+            <td>Star design, gross weight: 12 lbs</td>
+            <td align="right">40.50</td>
+            <td align="right">500</td>
+          </tr>
+          <tr>
+            <td align="right">5</td>
+            <td align="right">102</td>
+            <td>Black Tea</td>
+            <td>Shelf life: 2 years, net weight: 600 grams</td>
+            <td align="right">10.00</td>
+            <td align="right">1</td>
+          </tr>
+          <tr>
+            <td align="right">6</td>
+            <td align="right">102</td>
+            <td>Jasmine Tea</td>
+            <td>Shelf life: 2 years, net weight: 600 grams</td>
+            <td align="right">10.00</td>
+            <td align="right">1</td>
+          </tr>
+          <tr>
+            <td align="right">7</td>
+            <td align="right">104</td>
+            <td>Black Straws (1000)</td>
+            <td>For boba (12 mm x 20 cm), material: plastic, gross weight: 7 lbs</td>
+            <td align="right">24.90</td>
+            <td align="right">1000</td>
+          </tr>
+        </table>
+    </div> <!-- browse Products -->
+    <p>&nbsp;</p>
+
+    <div id="insert">
+        <form method="POST" id="addProduct">
+            <legend><strong>Add a Product</strong></legend>
+            <fieldset class="fields">
+                <label> Product Type ID </label> <input type="number" min="1" name="productTypeID">
+                <label> Name </label> <input type="text" name="productName">
+                <label> Description </label> <input type="text" name="productDescription">
+                <label> Product Price ($) </label> <input type="number" min="0" step="0.01" name="productPrice">
+                <label> Quantity per Unit</label> <input type="number" min="0" name="quantityPerUnit">
+            </fieldset>
+            <input class="button" type="submit" id="addProduct" value="Add Product">
+        </form> 
+    </div><!-- insert Product -->
+    <p>&nbsp;</p>
+</body>
+</html>

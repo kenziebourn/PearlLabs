@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+</head>
+<body>
+    <h1>Orders & Ordered Products</h1>
+
+    <div id="browse">
+        <table border="1" cellpadding="5">
+        <caption>Information for all orders</caption>
+          <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Order Date</th>
+            <th>Order Price ($)</th>
+          </tr>
+          <tr>
+            <td align="right">1</td>
+            <td align="right">3</td>
+            <td>2023-01-22</td>
+            <td align="right">171.00</td>
+          </tr>
+          <tr>
+            <td align="right">2</td>
+            <td align="right">1</td>
+            <td>2022-02-15</td>
+            <td align="right">381.60</td>
+          </tr>
+          <tr>
+            <td align="right">3</td>
+            <td align="right">1</td>
+            <td>2023-04-17</td>
+            <td align="right">90.00</td>
+          </tr>
+        </table>
+    </div> <!-- browse Orders -->
+    <p>&nbsp;</p>
+
+    <div id="insert">
+            <form method="POST" id="addOrder">
+                <legend><strong>Add an Order without Products</strong></legend>
+                <fieldset class="fields">
+                    <label> Customer ID </label> <input type="number" min="1" name="customerID">
+                    <label> Order Date </label> <input type="date" name="orderDate">
+                    <label> Order Price ($) </label> <input type="number" min="0" step="0.01" name="orderPrice">
+                </fieldset>
+                  <input class="button" type="submit" id="addOrder" value="Add Order">
+            </form> 
+    </div><!-- insert Order -->
+    <p>&nbsp;</p>
+
+    <div id="delete">
+        <form method="POST" id="deleteOrder">
+            <legend><strong>Delete an Order</strong></legend>
+                <fieldset class="fields">
+                <p>Enter the ID of the order you'd like to delete</p>
+                <input type="number" min="1" name="orderID" id="deleteOrder" value="1">
+          </fieldset>
+          <input class="button" type="submit" id="DeleteOrder" value="Delete Order">
+        </form> 
+    </div><!-- delete -->
+    <p>&nbsp;</p>
+
+    <div id="browse">
+        <table border="1" cellpadding="5">
+        <caption>Information for all ordered products</caption>
+          <tr>
+            <th>Order ID</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+          </tr>
+          <tr>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="right">6</td>
+            <td>10 NET 30</td>
+          </tr>
+          <tr>
+            <td align="right">1</td>
+            <td align="right">5</td>
+            <td align="right">10</td>
+            <td>NULL</td>
+          </tr>
+          <tr>
+            <td align="right">2</td>
+            <td align="right">3</td>
+            <td align="right">4</td>
+            <td>NULL</td>
+          </tr>
+          <tr>
+            <td align="right">2</td>
+            <td align="right">7</td>
+            <td align="right">4</td>
+            <td>NULL</td>
+          </tr>
+          <tr>
+            <td align="right">3</td>
+            <td align="right">5</td>
+            <td align="right">10</td>
+            <td>10 NET 30</td>
+          </tr>
+        </table>
+    </div> <!-- browse OrderProducts -->
+    <p>&nbsp;</p>
+
+    <div id="insert">
+        <form method="POST" id="addOrderProduct">
+            <legend><strong>Add an Ordered Product</strong></legend>
+            <fieldset class="fields">
+                <label> Order ID </label> <input type="number" min="1" name="orderID">
+                <label> Product ID </label> <input type="number" min="1" name="productID">
+                <label> Quantity </label> <input type="number" min="1" name="quantity">
+                <label> Discount </label> <input type="text" name="discount">
+            </fieldset>
+            <input class="button" type="submit" id="addOrderProduct" value="Add Ordered Product">
+        </form> 
+    </div><!-- insert OrderProduct -->
+    <p>&nbsp;</p>
+
+    <div id="update">
+        <form method="POST" id="updateOrderProduct">
+            <legend><strong>Update an Ordered Product</strong></legend>
+              <fieldset class="fields">
+                <label> Order ID </label> <input type="number" min=1 name="orderID" value="1">
+                <label> Product ID </label> <input type="number" min=1 name="productID" value="1">
+                <label> Quantity </label> <input type="number" min=1 name="orderID" value="6">
+                <label> Discount </label> <input type="text" name="discount" value="10 NET 30">
+          </fieldset>
+              <input class="button" type="submit" id="UpdateOrderProduct" value="Save Ordered Product">
+        </form> 
+    </div><!-- update OrderProduct -->
+    <p>&nbsp;</p>
+
+</body>
+</html>

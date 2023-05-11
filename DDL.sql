@@ -41,11 +41,11 @@ CREATE OR REPLACE TABLE `Products` (
 
 -- Create OrderProducts table
 CREATE OR REPLACE TABLE `OrderProducts` (
-    `productID` int(11) NOT NULL,
     `orderID` int(11) NOT NULL,
+    `productID` int(11) NOT NULL,
     `quantity` int(10) NOT NULL,
     `discount` varchar(20),
-    PRIMARY KEY (`productID`, `orderID`),
+    PRIMARY KEY (`orderID`, `productID`),
     FOREIGN KEY (`productID`) REFERENCES `Products`(`productID`),
     FOREIGN KEY (`orderID`) REFERENCES `Orders`(`orderID`) 
     ON DELETE CASCADE
@@ -76,12 +76,12 @@ VALUES (3, '2023-01-22', 171),
 (1, '2023-04-17', 90);
 
 -- Insert data into OrderProducts table
-INSERT INTO `OrderProducts`(`productID`, `orderID`, `quantity`, `discount`)
+INSERT INTO `OrderProducts`(`orderID`, `productID`, `quantity`, `discount`)
 VALUES (1, 1, 6, '10 NET 30'),
-(5, 1, 10, NULL),
-(3, 2, 4, NULL),
-(7, 2, 4, NULL),
-(5, 3, 10, '10 NET 30');
+(1, 5, 10, NULL),
+(2, 3, 4, NULL),
+(2, 7, 4, NULL),
+(3, 5, 10, '10 NET 30');
 
 -- Insert data into Products table
 INSERT INTO `Products` (`productTypeID`, `productName`, `productDescription`, `productPrice`, `quantityPerUnit`)
