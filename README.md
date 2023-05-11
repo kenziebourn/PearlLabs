@@ -1,1 +1,4 @@
 # PearlLabs
+
+## Overview
+Pearl Labs is an online boba shop supplier based in Los Angeles which makes $50,000 in sales annually and is looking to expand its operations in the US. The supplier sells boba ingredients (tea leaves, flavor powders and syrups) and supplies (cups, lids, straws). Pearl Labs generates 70% of their sales from boba ingredients and 30% from supplies. However, as the business expands, it becomes more challenging to manage customer orders and inventory. The supplier needs a solution to automate the recording and management of orders and customer information. By implementing a database-driven website, Pearl Labs can better manage inventory levels to avoid stockouts and overstocking while also recording customer information efficiently.  As a result, Pearl Labs will have a centralized system to manage inventory and customers resulting in more efficient operations and increased profitability.
