@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProductTypes</title>
+</head>
+<body>
+    <h1>ProductTypes</h1>
+<!--Linking to other pages-->
+[ <a href="Homepage.html">Home</a> | <a href="Customers.html">Customers</a> |  <a href="Orders.html">Orders</a> | <a href="Products.html">Products</a> | <a href="ProductTypes.html">ProductTypes</a> ]
+
+    <!--Browse all ProductTypes-->
+    <div id="browse">
+        <table border="1" cellpadding="5">
+        <caption>Information for all ProductTypes</caption>
+          <tr>
+            <th>ProductType ID</th>
+            <th>Product Type</th>
+            <th>Product Description</th>
+          </tr>
+          <tr>
+            <td align="right">101</td>
+            <td align="right">Syrup</td>
+            <td align="right">Sold by the bottle</td>
+          </tr>
+          
+          <tr>
+            <td align="right">102</td>
+            <td align="right">Tea</td>
+            <td align="right">Varieties of loose leaf tea sourced from Taiwan</td>
+          </tr>
+
+          <tr>
+            <td align="right">103</td>
+            <td align="right">Cup</td>
+            <td align="right">Material: polypropylene, sold in cases of 500 or 1000</td>
+          </tr>
+
+          <tr>
+            <td align="right">104</td>
+            <td align="right">Straw</td>
+            <td align="right">Individually plastic-wrapped straws, sold in cases of 500 or 1000</td>
+          </tr>
+
+        </table>
+    </div> 
+    <p>&nbsp;</p>
+
+    <!-- Add a ProductType -->
+    <div id="insert">
+            <form method="POST" id="addProductType">
+                <legend><strong>Add a Product Type</strong></legend>
+                <fieldset class="fields">
+                    <label> ProductType ID </label> <input type="number" min="1" name="productTypeID"><br>
+                    <label> Product Type </label> <input type="text" name="productType"><br>
+                    <label> Product Description </label> <input type="text" name="productTypeDescription"><br>
+                </fieldset>
+                  <input class="button" type="submit" id="addProductTypeID" value="Add Product Type">
+            </form> 
+    </div>
+    <p>&nbsp;</p>
+
+  
+
+   
+</body>
+</html>

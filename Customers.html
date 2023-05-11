@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+    <h1>Customers</h1>
+<!--Linking to other pages-->
+[ <a href="Homepage.html">Home</a> | <a href="Customers.html">Customers</a> |  <a href="Orders.html">Orders</a> | <a href="Products.html">Products</a> | <a href="ProductTypes.html">ProductTypes</a> ]
+
+    <!--Browse all Customers-->
+    <div id="browse">
+        <table border="1" cellpadding="5">
+        <caption>Information for all customers</caption>
+          <tr>
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Street Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Phone</th>
+            <th>Email</th>
+          </tr>
+          <tr>
+            <td align="right">1</td>
+            <td align="right">Jasmine</td>
+            <td align="right">Lee</td>
+            <td align="right">8680 NW 23rd St</td>
+            <td align="right">Portland</td>
+            <td align="right">OR</td>
+            <td align="right">97210</td>
+            <td align="right">971-888-3535</td>
+            <td align="right">jasleetea@gmail.com</td>
+          </tr>
+          
+          <tr>
+            <td align="right">2</td>
+            <td align="right">Daniel</td>
+            <td align="right">Smith</td>
+            <td align="right">910 Main St</td>
+            <td align="right">Los Angeles</td>
+            <td align="right">CA</td>
+            <td align="right">90001</td>
+            <td align="right">213-678-9011</td>
+            <td align="right">smith.daniel@gmail.com</td>
+          </tr>
+
+          <tr>
+            <td align="right">3</td>
+            <td align="right">Emily</td>
+            <td align="right">Nguyen</td>
+            <td align="right">3700 County Rd</td>
+            <td align="right">Houston</td>
+            <td align="right">TX</td>
+            <td align="right">77001</td>
+            <td align="right">281-346-8320</td>
+            <td align="right">em.nguyen@gmail.com</td>
+          </tr>
+
+          <tr>
+            <td align="right">4</td>
+            <td align="right">Michael</td>
+            <td align="right">Miller</td>
+            <td align="right">580 Gates St</td>
+            <td align="right">San Francisco</td>
+            <td align="right">CA</td>
+            <td align="right">94016</td>
+            <td align="right">415-628-6500</td>
+            <td align="right">michael.bobashop@gmail.com</td>
+          </tr>
+
+          <tr>
+            <td align="right">5</td>
+            <td align="right">Emma</td>
+            <td align="right">Clark</td>
+            <td align="right">1936 N 85th St</td>
+            <td align="right">Seattle</td>
+            <td align="right">WA</td>
+            <td align="right">98101</td>
+            <td align="right">206-426-7834</td>
+            <td align="right">clarkstea@gmail.com</td>
+          </tr>
+
+        </table>
+    </div> 
+    <p>&nbsp;</p>
+
+    <!-- Add a Customer -->
+    <div id="insert">
+            <form method="POST" id="addCustomer">
+                <legend><strong>Add a Customer</strong></legend>
+                <fieldset class="fields">
+                    <label> Customer ID </label> <input type="number" min="1" name="customerID"><br>
+                    <label> First Name </label> <input type="text" name="firstName"><br>
+                    <label> Last Name </label> <input type="text" name="lastName"><br>
+                    <label> Street Address </label> <input type="text" name="streetAddress"><br>
+                    <label> City </label> <input type="text" name="city"><br>
+                    <label> State </label> <input type="text" name="state"><br>
+                    <label> Zipcode </label> <input type="text" min="5" name="zipcode"><br>
+                    <label> Phone </label> <input type="text" name="phoneNumber"><br>
+                    <label> Email </label> <input type="text" name="email">
+                </fieldset>
+                  <input class="button" type="submit" id="addCustomerID" value="Add Customer">
+            </form> 
+    </div>
+    <p>&nbsp;</p>
+
+    <!--Search for a specific Customer-->
+    <div id="search">
+        <form method="POST" id="searchCustomer">
+            <legend><strong>Search Customer</strong></legend>
+                <fieldset class="fields">
+                <p>Enter the ID of the Customer you'd like to search for</p>
+                <input type="number" min="1" name="customerID" id="searchCustomer" value="1">
+          </fieldset>
+          <input class="button" type="submit" id="searchCustomerID" value="Search">
+        </form> 
+    </div>
+    <p>&nbsp;</p>
+
+    <!--Delete a Customer-->
+    <div id="delete">
+        <form method="POST" id="deleteCustomer">
+            <legend><strong>Delete a Customer</strong></legend>
+                <fieldset class="fields">
+                <p>Enter the ID of the Customer you'd like to delete</p>
+                <input type="number" min="1" name="customerID" id="deleteCustomer" value="1">
+          </fieldset>
+          <input class="button" type="submit" id="deleteCustomerID" value="Delete Customer">
+        </form> 
+    </div>
+    <p>&nbsp;</p>
+
+</body>
+</html>
