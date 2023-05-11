@@ -124,7 +124,11 @@
         <form method="POST" id="updateOrderProduct">
             <legend><strong>Update an Ordered Product</strong></legend>
               <fieldset class="fields">
-                <label> Order ID </label> <input type="number" min=1 name="orderID" value="1">
+                <label> OrderID </label> <select name="orderID">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    </select>
                 <label> Product ID </label> <input type="number" min=1 name="productID" value="1">
                 <label> Quantity </label> <input type="number" min=1 name="orderID" value="6">
                 <label> Discount </label> <input type="text" name="discount" value="10 NET 30">
