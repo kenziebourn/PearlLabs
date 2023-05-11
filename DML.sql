@@ -6,6 +6,9 @@
 -- Get data for all customers
 SELECT * FROM Customers;
 
+-- Search for specific customer 
+SELECT * FROM Customers where customerID = :customerIDInput
+
 -- Add a new customer
 INSERT INTO Customers (firstName, lastName, streetAddress, city, state, zipcode, phoneNumber, email)
 VALUES (:firstNameInput, :lastNameInput, :streetAddressInput, :cityInput, :stateInput, :zipcodeInput, :phoneNumberInput, :emailInput);
