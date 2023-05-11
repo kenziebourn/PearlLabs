@@ -37,7 +37,6 @@ CREATE OR REPLACE TABLE `Products` (
     `quantityPerUnit` int(5) NOT NULL,
     PRIMARY KEY (`productID`),
     FOREIGN KEY (`productTypeID`) REFERENCES `ProductTypes`(`productTypeID`)
-    ON DELETE CASCADE
 );
 
 -- Create OrderProducts table
@@ -47,8 +46,7 @@ CREATE OR REPLACE TABLE `OrderProducts` (
     `quantity` int(10) NOT NULL,
     `discount` varchar(20),
     PRIMARY KEY (`productID`, `orderID`),
-    FOREIGN KEY (`productID`) REFERENCES `Products`(`productID`)
-    ON DELETE CASCADE,
+    FOREIGN KEY (`productID`) REFERENCES `Products`(`productID`),
     FOREIGN KEY (`orderID`) REFERENCES `Orders`(`orderID`) 
     ON DELETE CASCADE
 );
