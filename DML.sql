@@ -17,10 +17,14 @@ VALUES (:firstNameInput, :lastNameInput, :streetAddressInput, :cityInput, :state
 -- Orders --
 --------------------------------
 -- Get data for all orders
-SELECT * FROM Orders;
+SELECT Orders.orderID, Orders.customerID, CONCAT(Customers.firstName, ' ', Customers.lastName) AS customerName, Orders.orderDate, Orders.orderPrice FROM Orders
+INNER JOIN Customers
+ON Orders.customerID = Customers.customerID;
 
--- Get data for all order products
-SELECT * FROM OrderProducts;
+-- Get data for all ordered products
+SELECT OrderProducts.orderID, OrderProducts.productID, Products.productName AS productName, OrderProducts.quantity, OrderProducts.discount FROM OrderProducts
+INNER JOIN Products
+ON OrderProducts.productID = Products.productID;
 
 -- Add an order
 INSERT INTO Orders (customerID, orderDate, orderPrice)
@@ -32,6 +36,9 @@ VALUES (:orderIDInput, :productIDInput, :quantityInput, :discountInput);
 
 -- Delete an order
 DELETE FROM Orders WHERE orderID = :orderIDInput;
+
+-- Populate dropdown with all order IDs for update an ordered product
+SELECT orderID FROM Orders;
 
 -- Update an ordered product
 UPDATE OrderProducts
@@ -47,6 +54,18 @@ SELECT * FROM Products;
 -- Add a new product
 INSERT INTO Products (productTypeID, productName, productDescription, productPrice, quantityPerUnit)
 VALUES (:productTypeIDInput, :productNameInput, :productDescriptionInput, :productPriceInput, :quantityPerUnitInput);
+
+-- Populate dropdown with all product names for update a product
+SELECT productID, productName FROM Products;
+
+-- Populate dropdown with all product type IDs for update a product
+SELECT productTypeID FROM ProductTypes;
+
+-- Update a product
+UPDATE Products
+SET productTypeID = :productTypeID_from_dropdown, productDescription = :productDescriptionInput,
+    productPrice = :productPriceInput, quantityPerUnit = :quantityPerUnitInput
+WHERE productID = :productID_from_dropdown;
 
 --------------------------------
 -- ProductTypes --

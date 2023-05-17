@@ -94,5 +94,35 @@
         </form> 
     </div><!-- insert Product -->
     <p>&nbsp;</p>
+
+    <div id="update">
+      <form method="POST" id="updateProduct">
+          <legend><strong>Update a Product</strong></legend>
+            <fieldset class="fields">
+              <label> Product Name </label> <select name="productName">
+                  <option value="1">Wintermelon Syrup</option>
+                  <option value="2">Strawberry Syrup</option>
+                  <option value="3">12oz Cups (1000)</option>
+                  <option value="4">24 oz Cups (500)</option>
+                  <option value="5">Black Tea</option>
+                  <option value="6">Jasmine Tea</option>
+                  <option value="7">Black Straws (1000)</option>
+                  </select>
+              <label> Product Type </label> <select name="productType">
+                  <option value="1">101</option>
+                  <option value="2">102</option>
+                  <option value="3">103</option>
+                  <option value="4">104</option>
+                  <option value="5">NULL</option>
+                  </select>
+              <label> Description </label> <input type="text" name="description" value="Shelf life: 1 year, net weight: 5 lbs">
+              <label> Price </label> <input type="number" name="productPrice" min="0" step="0.01" value="15.00">
+              <label> Quantity per Unit</label> <input type="number" min=1 name="quantityPerUnit" value="1">
+
+        </fieldset>
+            <input class="button" type="submit" id="UpdateProduct" value="Save Product">
+      </form> 
+  </div><!-- update Product -->
+  <p>&nbsp;</p>
 </body>
 </html>

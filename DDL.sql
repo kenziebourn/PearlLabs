@@ -30,13 +30,14 @@ CREATE OR REPLACE TABLE `Orders` (
 -- Create Products table
 CREATE OR REPLACE TABLE `Products` (
     `productID` int(11) NOT NULL AUTO_INCREMENT,
-    `productTypeID` int(11) NOT NULL,
+    `productTypeID` int(11),
     `productName` varchar(50) NOT NULL,
     `productDescription` text NOT NULL,
     `productPrice` decimal(12,2) NOT NULL,
     `quantityPerUnit` int(5) NOT NULL,
     PRIMARY KEY (`productID`),
     FOREIGN KEY (`productTypeID`) REFERENCES `ProductTypes`(`productTypeID`)
+    ON UPDATE SET NULL
 );
 
 -- Create OrderProducts table
