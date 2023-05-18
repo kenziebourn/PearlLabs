@@ -6,13 +6,13 @@ SET AUTOCOMMIT=0;
 -- Create Customers table
 CREATE OR REPLACE TABLE `Customers` (
   `customerID` int(11) NOT NULL AUTO_INCREMENT,
-  `firstName` varchar(50) DEFAULT NULL,
-  `lastName` varchar(50) DEFAULT NULL,
-  `streetAddress` varchar(200) DEFAULT NULL,
-  `city` varchar(50) DEFAULT NULL,
-  `state` varchar(50) DEFAULT NULL,
-  `zipcode` int(5) DEFAULT NULL,
-  `phoneNumber` varchar(15) DEFAULT NULL,
+  `firstName` varchar(50) NOT NULL,
+  `lastName` varchar(50) NOT NULL,
+  `streetAddress` varchar(200) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `zipcode` int(5) NOT NULL,
+  `phoneNumber` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL, 
    PRIMARY KEY (`customerID`)
 );
