@@ -1,0 +1,25 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "description": "This is the node application for PearlLabs ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kenziebourn/PearlLabs.git"
+  },
+  "author": "McKenzie Bourn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenziebourn/PearlLabs/issues"
+  },
+  "homepage": "https://github.com/kenziebourn/PearlLabs#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "forever": "^4.0.3",
+    "mysql": "^2.18.1"
+  }
+}
