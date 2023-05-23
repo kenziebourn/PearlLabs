@@ -105,6 +105,84 @@ app.get('/search-customer-html', function(req, res)
     }
 });
 
+// Orders Page
+app.get('/Orders', function(req, res) {
+    // Retrieve all information from Orders Table
+    let query1 = "SELECT * FROM Orders;";
+    db.pool.query(query1, function(error, ordersRows, fields) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(500);
+            return;
+        }
+
+        // Retrieve all information from OrderProducts Table
+        let query2 = "SELECT * FROM OrderProducts;";
+        db.pool.query(query2, function(error, orderProductsRows, fields) {
+            if (error) {
+                console.log(error);
+                res.sendStatus(500);
+                return;
+            }
+
+            res.render('orders', {
+                ordersData: ordersRows,
+                orderProductsData: orderProductsRows
+            });
+        });
+    });
+});
+
+
+// Search a Order
+app.get('/search-order-html', function(req, res)
+{
+    // Retrieve value of input-customerID query parameter from request's query string
+    const customerID = req.query['input-customerID'];
+    
+    // If a customer ID is provided, query the database to find the customer
+    if (customerID) {
+        const query = `SELECT * FROM Orders WHERE customerID = ${customerID}`;
+        db.pool.query(query, function(error, rows, fields) {
+            if (error) {
+                console.log(error);
+                res.sendStatus(500);
+            } else {
+                res.render('orders', { data: rows });
+            }
+        });
+    }
+    // If no customer ID is provided, render the customers page without any specific customer data
+    else {
+        const query = 'SELECT * FROM Orders';
+        db.pool.query(query, function(error, rows, fields) {
+            if (error) {
+                console.log(error);
+                res.sendStatus(500);
+            } else {
+                res.render('orders', { data: rows });
+            }
+        });
+    }
+});
+
+// Delete an Order
+app.post('/delete-order-form', function(req, res) {
+    const orderID = req.body['input-orderID'];
+
+    // Perform the deletion in the database
+    const query = `DELETE FROM Orders WHERE orderID = ${orderID}`;
+    db.pool.query(query, function(error, result) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(500);
+        } else {
+            // Redirect back to the orders page after successful deletion
+            res.redirect('/Orders');
+        }
+    });
+});
+
 /*
     LISTENER
 */

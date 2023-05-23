@@ -1,1 +1,103 @@
 {{!-- This is the Orders page --}}
+
+ <h1>Orders and Ordered Products</h1>
+[ <a href="/">Home</a> | <a href="/Customers">Customers</a> |  <a href="/Orders">Orders</a> | <a href="/Products">Products</a> | <a href="/ProductTypes">ProductTypes</a> ]
+
+{{!-- Create Orders table --}}
+<table id="orders-table" border="1" cellpadding="5">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- Display each column name in human readable format --}}
+        <caption>Information for all orders</caption>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer ID</th>
+            <th>Order Date</th>
+            <th>Order Price</th>
+        </tr>
+    </thead>
+
+{{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the orderID, customerID, orderDate, orderPrice in order --}}
+        {{#each ordersData}}
+        <tr>
+            <td>{{this.orderID}}</td>
+            <td>{{this.customerID}}</td>
+            <td>{{this.orderDate}}</td>
+            <td>{{this.orderPrice}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+{{!-- Form to add a Order to the table using standard HTML forms --}}
+<h2>Add a Order</h2>
+{{! <code here>}}
+
+{{!-- Search for a Order by customerID using HTML Form--}}
+<h2>Search a Order</h2>
+<p>To search for a customer's orders, please enter their customer ID</p>
+<form id="search-order-html" method='GET' action='/search-order-html'>
+    <label for="input-customerID">Search by ID: </label>
+    <input type="text" name="input-customerID" id="input-customerID-html-search">
+    
+    <input type="submit">
+    <a href='/Orders'><button>Reset</button></a>
+</form>
+
+
+{{!-- Delete an Order by orderID using HTML Form --}}
+<h2>Delete an Order</h2>
+<p>To delete a customer's order, please enter their order ID</p>
+<form id="delete-order-form" method="POST" action="/delete-order-form">
+    <label for="input-orderID">Order ID: </label>
+    <input type="text" name="input-orderID" id="input-orderID">
+    <input type="submit" value="Delete">
+</form>
+
+{{!-- Create OrderProducts table --}}
+<table id="orderProducts-table" border="1" cellpadding="5">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- Display each column name in human readable format --}}
+        <caption>Information for all Ordered Products</caption>
+        <tr>
+            <th>Order ID</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Discount</th>
+        </tr>
+    </thead>
+<br>
+<br>
+{{!-- Body section --}}
+    <tbody>
+
+        {{!-- For each row, print the orderID, customerID, orderDate, orderPrice in order --}}
+        {{#each orderProductsData}}
+        <tr>
+            <td>{{this.orderID}}</td>
+            <td>{{this.productID}}</td>
+            <td>{{this.quantity}}</td>
+            {{! Displays discount as NULL if it is}}
+            <td>{{#if this.discount}}
+                {{this.discount}}
+                {{else}}
+                NULL
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add an Ordered Product to the table using standard HTML forms --}}
+<h2>Add an Ordered Product</h2>
+{{! <code here>}}
