@@ -21,7 +21,7 @@ CREATE OR REPLACE TABLE `Customers` (
 CREATE OR REPLACE TABLE `Orders` (
     `orderID` int(11) NOT NULL AUTO_INCREMENT,
     `customerID` int(11) NOT NULL,
-    `orderDate` datetime,
+    `orderDate` date,
     `orderPrice` decimal(12,2) NOT NULL,
     PRIMARY KEY (`orderID`),
     FOREIGN KEY (`customerID`) REFERENCES `Customers`(`customerID`)

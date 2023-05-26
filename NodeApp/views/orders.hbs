@@ -1,6 +1,6 @@
 {{!-- This is the Orders page --}}
 
- <h1>Orders and Ordered Products</h1>
+<h1>Orders and Ordered Products</h1>
 [ <a href="/">Home</a> | <a href="/Customers">Customers</a> |  <a href="/Orders">Orders</a> | <a href="/Products">Products</a> | <a href="/ProductTypes">ProductTypes</a> ]
 
 {{!-- Create Orders table --}}
@@ -34,13 +34,24 @@
     </tbody>
 </table>
 
-
 {{!-- Form to add a Order to the table using standard HTML forms --}}
-<h2>Add a Order</h2>
-{{! <code here>}}
+<h2>Add an Order</h2>
+<p>To add a new Order, please enter its information below and click `Submit`!</p>
+<form id="add-order-form" method="POST" action="/add-order-form">
+    <label for="input-customerID">Customer ID: </label>
+    <input type="number" name="input-customerID" id="input-customerID">
+    <br>
+    <label for="input-orderDate">Order Date: </label>
+    <input type="date" name="input-orderDate" id="input-orderDate">
+    <br>
+    <label for="input-orderPrice">Order Price ($): </label>
+    <input type="number" min="0" step="0.01" name="input-orderPrice" id="input-orderPrice">
+    <br>
+    <input type="submit">
+</form> 
 
 {{!-- Search for a Order by customerID using HTML Form--}}
-<h2>Search a Order</h2>
+<h2>Search an Order</h2>
 <p>To search for a customer's orders, please enter their customer ID</p>
 <form id="search-order-html" method='GET' action='/search-order-html'>
     <label for="input-customerID">Search by ID: </label>
@@ -100,4 +111,19 @@
 
 {{!-- Form to add an Ordered Product to the table using standard HTML forms --}}
 <h2>Add an Ordered Product</h2>
-{{! <code here>}}
+<p>To add an ordered product, please enter its information below and click `Submit`!</p>
+<form id="add-ordered-product-form" method="POST" action="/add-ordered-product-form">
+    <label for="input-orderID">Order ID: </label>
+    <input type="number" name="input-orderID" id="input-orderID">
+    <br>
+    <label for="input-productID">Product ID: </label>
+    <input type="number" name="input-productID" id="input-productID">
+    <br>
+    <label for="input-quantity">Quantity: </label>
+    <input type="number" name="input-quantity" id="input-quantity">
+    <br>
+    <label for="input-discount">Discount: </label>
+    <input type="text" name="input-discount" id="input-discount">
+    <br>
+    <input type="submit">
+</form> 

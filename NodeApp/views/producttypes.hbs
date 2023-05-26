@@ -1,1 +1,33 @@
 {{!-- This is the Product Types page --}}
+
+<h1>Product Types</h1>
+[ <a href="/">Home</a> | <a href="/Customers">Customers</a> |  <a href="/Orders">Orders</a> | <a href="/Products">Products</a> | <a href="/ProductTypes">ProductTypes</a> ]
+
+{{!-- Create Product Types table --}}
+<table id="product-types-table" border="1" cellpadding="5">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- Display each column name in human readable format --}}
+        <caption>Information for all product types</caption>
+        <tr>
+            <th>ProductType ID</th>
+            <th>Product Type</th>
+            <th>Product Description</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+        
+        {{!-- For each row, print the productTypeID, productType, productTypeDescription in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.productTypeID}}</td>
+            <td>{{this.productType}}</td>
+            <td>{{this.productTypeDescription}}</td>
+        </tr>
+        {{/each}}
+    </tbody> 
+</table>

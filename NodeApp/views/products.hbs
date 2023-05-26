@@ -1,1 +1,39 @@
 {{!-- This is the Products page --}}
+
+<h1>Products</h1>
+[ <a href="/">Home</a> | <a href="/Customers">Customers</a> |  <a href="/Orders">Orders</a> | <a href="/Products">Products</a> | <a href="/ProductTypes">ProductTypes</a> ]
+
+{{!-- Create Products table --}}
+<table id="products-table" border="1" cellpadding="5">
+
+    {{!-- Header section --}}
+    <thead>
+
+        {{!-- Display each column name in human readable format --}}
+        <caption>Information for all products</caption>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Type ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Product Price ($)</th>
+            <th>Quantity per Unit</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody>
+        
+        {{!-- For each row, print the productID, productTypeID, productName, productDescription, productPrice, quantityPerUnit in order --}}
+        {{#each data}}
+        <tr>
+            <td>{{this.productID}}</td>
+            <td>{{this.productTypeID}}</td>
+            <td>{{this.productName}}</td>
+            <td>{{this.productDescription}}</td>
+            <td>{{this.productPrice}}</td>
+            <td>{{this.quantityPerUnit}}</td>
+        </tr>
+        {{/each}}
+    </tbody> 
+</table>
