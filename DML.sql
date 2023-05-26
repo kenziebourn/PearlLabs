@@ -33,15 +33,15 @@ SELECT SELECT * FROM Orders where customerID = :customerIDInput
 INSERT INTO Orders (customerID, orderDate, orderPrice)
 VALUES (:customerIDInput, :orderDateInput, :orderPriceInput);
 
+-- Delete an order
+DELETE FROM Orders WHERE orderID = :orderIDInput;
+
 -- Add an ordered product
 INSERT INTO OrderProducts (orderID, productID, quantity, discount)
 VALUES (:orderIDInput, :productIDInput, :quantityInput, :discountInput);
 
--- Delete an order
-DELETE FROM Orders WHERE orderID = :orderIDInput;
-
 -- Populate dropdown with all order IDs for update an ordered product
-SELECT orderID FROM Orders;
+SELECT DISTINCT orderID FROM OrderProducts;
 
 -- Update an ordered product
 UPDATE OrderProducts
