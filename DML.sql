@@ -26,6 +26,9 @@ SELECT OrderProducts.orderID, OrderProducts.productID, Products.productName AS p
 INNER JOIN Products
 ON OrderProducts.productID = Products.productID;
 
+-- Search an Order
+SELECT SELECT * FROM Orders where customerID = :customerIDInput
+
 -- Add an order
 INSERT INTO Orders (customerID, orderDate, orderPrice)
 VALUES (:customerIDInput, :orderDateInput, :orderPriceInput);
