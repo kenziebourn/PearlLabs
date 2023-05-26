@@ -135,9 +135,9 @@
 <form id="update-orderProduct-form" action="/update-orderProduct-form" method="POST">
   <label for="orderID">Order ID:</label>
   <select id="orderID" name="orderID">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
+    {{#each orderIDs}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
   </select>
   <label for="input-productID">Product ID:</label>
   <input type="number" name="input-productID" id="input-productID">
@@ -149,3 +149,4 @@
   <input type="text" name="input-discount" id="input-discount">
   <button type="submit">Submit</button>
 </form>
+

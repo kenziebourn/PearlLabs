@@ -110,26 +110,40 @@ app.get('/Orders', function(req, res) {
     // Retrieve all information from Orders Table
     let query1 = "SELECT * FROM Orders;";
     db.pool.query(query1, function(error, ordersRows, fields) {
+      if (error) {
+        console.log(error);
+        res.sendStatus(500);
+        return;
+      }
+  
+      // Retrieve all information from OrderProducts Table
+      let query2 = "SELECT * FROM OrderProducts;";
+      db.pool.query(query2, function(error, orderProductsRows, fields) {
         if (error) {
-            console.log(error);
-            res.sendStatus(500);
-            return;
+          console.log(error);
+          res.sendStatus(500);
+          return;
         }
+  
+      // Retrieve current orderIDs from OrderProducts Table
+        let selectQuery = "SELECT DISTINCT orderID FROM OrderProducts;";
+        db.pool.query(selectQuery, function(selectError, selectResults) {
+          if (selectError) {
+            console.error('Error retrieving orderIDs:', selectError);
+            res.sendStatus(500); // Send HTTP response 500 for internal server error
+            return;
+          }
+          
+          const orderIDs = selectResults.map((row) => row.orderID); // represents the orderID's currently in the database
+          console.log(orderIDs)
 
-        // Retrieve all information from OrderProducts Table
-        let query2 = "SELECT * FROM OrderProducts;";
-        db.pool.query(query2, function(error, orderProductsRows, fields) {
-            if (error) {
-                console.log(error);
-                res.sendStatus(500);
-                return;
-            }
-
-            res.render('orders', {
-                ordersData: ordersRows,
-                orderProductsData: orderProductsRows
-            });
+          res.render('orders', {
+            ordersData: ordersRows,
+            orderProductsData: orderProductsRows,
+            orderIDs: orderIDs
+          });
         });
+      });
     });
 });
 
@@ -236,25 +250,27 @@ app.post('/add-ordered-product-form', function(req, res){
     })
 });
 // Update an Ordered Product
-app.post('/update-orderProduct-form', function(req,res) {
+app.post('/update-orderProduct-form', function(req, res) {
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
     console.log(data);
-
-    query1 = `UPDATE OrderProducts
-    SET productID = ${data['input-productID']}, quantity = ${data['input-quantity']}, discount = ${data['input-discount']}'
-    WHERE orderID = ${data['orderID']}`;
+  
+    // Perform the database update operation
+    const query1 = `UPDATE OrderProducts 
+    SET quantity = '${data['input-quantity']}', discount = '${data['input-discount']}' 
+    WHERE orderID = '${data['orderID']}'`;
     console.log(query1)
-
     db.pool.query(query1, function(error, results) {
-        if (error) {
-          console.log(error);
-          res.sendStatus(400); // Send HTTP response 400 for bad request
-        } else {
-          res.sendStatus(200); // Send HTTP response 200 for successful update
-        }
-      });
-});
+      if (error) {
+        console.error('Error updating orderProduct:', error);
+        res.sendStatus(500); // Send HTTP response 500 for internal server error
+      } else {
+        res.redirect('/Orders'); // Successful update
+      }
+    });
+  });
+  
+  
 
 
 // Products Page
