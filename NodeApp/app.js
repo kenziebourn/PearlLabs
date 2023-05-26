@@ -140,10 +140,10 @@ app.post('/add-order-form', function(req, res){
     console.log(data);
 
     // Create the query and run it on the database
-    query = `INSERT INTO Orders (customerID, orderDate, orderPrice) 
+    query1 = `INSERT INTO Orders (customerID, orderDate, orderPrice) 
     VALUES (${data['input-customerID']}, '${data['input-orderDate']}', ${data['input-orderPrice']})`;
      
-    db.pool.query(query, function(error, rows, fields){
+    db.pool.query(query1, function(error, rows, fields){
 
         // Check to see if there was an error
         if (error) {
@@ -235,6 +235,27 @@ app.post('/add-ordered-product-form', function(req, res){
         }
     })
 });
+// Update an Ordered Product
+app.post('/update-orderProduct-form', function(req,res) {
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+    console.log(data);
+
+    query1 = `UPDATE OrderProducts
+    SET productID = ${data['input-productID']}, quantity = ${data['input-quantity']}, discount = ${data['input-discount']}'
+    WHERE orderID = ${data['orderID']}`;
+    console.log(query1)
+
+    db.pool.query(query1, function(error, results) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400); // Send HTTP response 400 for bad request
+        } else {
+          res.sendStatus(200); // Send HTTP response 200 for successful update
+        }
+      });
+});
+
 
 // Products Page
 app.get('/Products', function(req, res)
@@ -271,6 +292,7 @@ app.post('/add-product-form', function(req, res){
         }
     })
 });
+
 
 // Product Types Page
 app.get('/ProductTypes', function(req, res)

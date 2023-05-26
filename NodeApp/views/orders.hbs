@@ -127,3 +127,25 @@
     <br>
     <input type="submit">
 </form> 
+
+
+{{!-- Form to update an Ordered Product using standard HTML forms --}}
+<h2>Update an Ordered Product</h2>
+<p>To update an ordered product, select the order ID from the drop-down menu and enter the product ID, quantity, and discount if applicable.</p>
+<form id="update-orderProduct-form" action="/update-orderProduct-form" method="POST">
+  <label for="orderID">Order ID:</label>
+  <select id="orderID" name="orderID">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+  </select>
+  <label for="input-productID">Product ID:</label>
+  <input type="number" name="input-productID" id="input-productID">
+  <br>
+  <label for="input-quantity">Quantity:</label>
+  <input type="number" name="input-quantity" id="input-quantity">
+  <br>
+  <label for="input-discount">Discount:</label>
+  <input type="text" name="input-discount" id="input-discount">
+  <button type="submit">Submit</button>
+</form>
