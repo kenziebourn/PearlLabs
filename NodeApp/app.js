@@ -258,7 +258,7 @@ app.post('/update-orderProduct-form', function(req, res) {
     // Perform the database update operation
     const query1 = `UPDATE OrderProducts 
     SET quantity = '${data['input-quantity']}', discount = '${data['input-discount']}' 
-    WHERE orderID = '${data['orderID']}'`;
+    WHERE orderID = '${data['orderID']}'AND productID='${data['input-productID']}';`;
     console.log(query1)
     db.pool.query(query1, function(error, results) {
       if (error) {
