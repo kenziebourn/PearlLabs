@@ -127,24 +127,38 @@ app.get('/Orders', function(req, res) {
   
       // Retrieve current orderIDs from OrderProducts Table
         let selectQuery = "SELECT DISTINCT orderID FROM OrderProducts;";
-        db.pool.query(selectQuery, function(selectError, selectResults) {
+        db.pool.query(selectQuery, function(selectError, selectResults1) {
           if (selectError) {
             console.error('Error retrieving orderIDs:', selectError);
             res.sendStatus(500); // Send HTTP response 500 for internal server error
             return;
           }
           
-          const orderIDs = selectResults.map((row) => row.orderID); // represents the orderID's currently in the database
-          console.log(orderIDs)
+          
+      // Retrieve distinct productIDs from OrderProducts Table
+        let selectQuery2 = "SELECT DISTINCT productID FROM OrderProducts;";
+        db.pool.query(selectQuery2, function(selectError2, selectResults2) {
+          if (selectError2) {
+            console.error('Error retrieving productIDs:', selectError2);
+            res.sendStatus(500); // Send HTTP response 500 for internal server error
+            return;
+          }
+
+          const orderIDs = selectResults.map((row) => row.orderID); // represents the distinct orderIDs currently in the database
+          const productIDs = selectResults2.map((row) => row.productID); // represents the distinct productIDs currently in the database
+          console.log(orderIDs);
+          console.log(productIDs);
 
           res.render('orders', {
             ordersData: ordersRows,
             orderProductsData: orderProductsRows,
-            orderIDs: orderIDs
+            orderIDs: orderIDs,
+            productIDs: productIDs
           });
         });
       });
     });
+  });
 });
 
 // Add an Order
@@ -258,7 +272,7 @@ app.post('/update-orderProduct-form', function(req, res) {
     // Perform the database update operation
     const query1 = `UPDATE OrderProducts 
     SET quantity = '${data['input-quantity']}', discount = '${data['input-discount']}' 
-    WHERE orderID = '${data['orderID']}'AND productID='${data['input-productID']}';`;
+    WHERE orderID = '${data['orderID']}'AND productID='${data['productID']}';`;
     console.log(query1)
     db.pool.query(query1, function(error, results) {
       if (error) {
@@ -270,15 +284,26 @@ app.post('/update-orderProduct-form', function(req, res) {
     });
   });
   
-  
-
-
 // Products Page
 app.get('/Products', function(req, res)
     { 
         let query1 = "SELECT * FROM Products;";
+
+        let query2 = "SELECT * FROM ProductTypes;";
+
+        // Run the 1st query
         db.pool.query(query1, function(error, rows, fields){
-            res.render('products', {data: rows});
+
+            // Save the products
+            let products = rows;
+
+            // Run the 2nd query 
+            db.pool.query(query2, (error, rows, fields) => {
+
+                // Save the product types
+                let types = rows;
+                return res.render('products', {data: products, types: types});
+            })
         })
     });
 
@@ -290,7 +315,7 @@ app.post('/add-product-form', function(req, res){
 
     // Create the query and run it on the database
     query1 = `INSERT INTO Products (productTypeID, productName, productDescription, productPrice, quantityPerUnit)
-    VALUES ('${data['input-productTypeID']}', '${data['input-productName']}', '${data['input-productDescription']}', '${data['input-productPrice']}', '${data['input-quantityPerUnit']}')`;
+    VALUES ('${data['input-productType']}', '${data['input-productName']}', '${data['input-productDescription']}', '${data['input-productPrice']}', '${data['input-quantityPerUnit']}')`;
      
     db.pool.query(query1, function(error, rows, fields){
 

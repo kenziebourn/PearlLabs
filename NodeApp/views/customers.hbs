@@ -1,5 +1,5 @@
 {{!-- This is the customers page --}}
-
+<link rel="stylesheet" type="text/css"   href="/css/style.css">
 <h1>Customers</h1>
 [ <a href="/">Home</a> | <a href="/Customers">Customers</a> |  <a href="/Orders">Orders</a> | <a href="/Products">Products</a> | <a href="/ProductTypes">ProductTypes</a> ]
 
@@ -83,7 +83,7 @@
 <p>To search for a customer, please enter their customer ID</p>
 <form id="search-customer-html" method='GET' action='/search-customer-html'>
     <label for="input-customerID">Search by ID: </label>
-    <input type="text" name="input-customerID" id="input-customerID-html-search" required>
+    <input type="text" name="input-customerID" id="input-customerID-html-search" min=1 required>
     
     <input type="submit">
     <a href='/Customers'><button>Reset</button></a>
