@@ -127,7 +127,7 @@ app.get('/Orders', function(req, res) {
   
       // Retrieve current orderIDs from OrderProducts Table
         let selectQuery = "SELECT DISTINCT orderID FROM OrderProducts;";
-        db.pool.query(selectQuery, function(selectError, selectResults) {
+        db.pool.query(selectQuery, function(selectError, selectResults1) {
           if (selectError) {
             console.error('Error retrieving orderIDs:', selectError);
             res.sendStatus(500); // Send HTTP response 500 for internal server error
