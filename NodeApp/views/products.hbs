@@ -42,8 +42,13 @@
 <h2>Add a Product</h2>
 <p>To add a new Product, please enter its information below and click `Submit`!</p>
 <form id="add-product-form" method="POST" action="/add-product-form">
-    <label for="input-productTypeID">Product Type ID: </label>
-    <input type="number" name="input-productTypeID" id="input-productTypeID" required>
+    <label for="input-productType">Product Type: </label>
+    <select name="input-productType" id="input-productType-html" required>
+        <option value="">Select a Product Type</option>
+        {{#each types}}
+        <option value="{{this.productTypeID}}">{{this.productType}}</option>
+        {{/each}}
+    </select>
     <br>
     <label for="input-productName">Name: </label>
     <input type="text" name="input-productName" id="input-productName" required>
@@ -52,7 +57,7 @@
     <input type="text" name="input-productName" id="input-productName" required>
     <br>
     <label for="input-productPrice">Product Price ($): </label>
-    <input type="number" name="input-productPrice" id="input-productPrice"> required
+    <input type="number" name="input-productPrice" id="input-productPrice" required>
     <br>
     <label for="input-quantityPerUnit">Quantity Per Unit: </label>
     <input type="number" name="input-quantityPerUnit" id="input-quantityPerUnit" required>
