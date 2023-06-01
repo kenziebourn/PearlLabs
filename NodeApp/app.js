@@ -270,15 +270,26 @@ app.post('/update-orderProduct-form', function(req, res) {
     });
   });
   
-  
-
-
 // Products Page
 app.get('/Products', function(req, res)
     { 
         let query1 = "SELECT * FROM Products;";
+
+        let query2 = "SELECT * FROM ProductTypes;";
+
+        // Run the 1st query
         db.pool.query(query1, function(error, rows, fields){
-            res.render('products', {data: rows});
+
+            // Save the products
+            let products = rows;
+
+            // Run the 2nd query 
+            db.pool.query(query2, (error, rows, fields) => {
+
+                // Save the product types
+                let types = rows;
+                return res.render('products', {data: products, types: types});
+            })
         })
     });
 
