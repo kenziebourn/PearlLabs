@@ -241,7 +241,7 @@ app.post('/add-ordered-product-form', function(req, res){
             console.log(error)
             res.sendStatus(400);
         }
-        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM Customers and
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM Orders and
         // presents it on the screen
         else
         {
@@ -282,7 +282,7 @@ app.get('/Products', function(req, res)
         })
     });
 
-// Add an Ordered Product
+// Add a Product
 app.post('/add-product-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
@@ -318,6 +318,33 @@ app.get('/ProductTypes', function(req, res)
             res.render('producttypes', {data: rows});
         })
     });
+
+// Add a Product Type
+app.post('/add-product-type-form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+    console.log(data);
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO ProductTypes (productType, productTypeDescription)
+    VALUES ('${data['input-productType']}', '${data['input-productTypeDescription']}')`;
+     
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM ProductTypes and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/ProductTypes');
+        }
+    })
+});
 
 /*
     LISTENER

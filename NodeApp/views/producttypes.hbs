@@ -31,3 +31,16 @@
         {{/each}}
     </tbody> 
 </table>
+
+{{!-- Form to add a Product Type to the table using standard HTML forms --}}
+<h2>Add a Product Type</h2>
+<p>To add a new Product Type, please enter its information below and click `Submit`!</p>
+<form id="add-product-type-form" method="POST" action="/add-product-type-form">
+    <label for="input-productType">Product Type: </label>
+    <input type="text" name="input-productType" id="input-productType">
+    <br>
+    <label for="input-productTypeDescription">Product Type Description: </label>
+    <input type="text" name="input-productTypeDescription" id="input-productTypeDescription">
+    <br>
+    <input type="submit">
+</form> 
