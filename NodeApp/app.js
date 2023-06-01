@@ -301,7 +301,7 @@ app.post('/add-product-form', function(req, res){
 
     // Create the query and run it on the database
     query1 = `INSERT INTO Products (productTypeID, productName, productDescription, productPrice, quantityPerUnit)
-    VALUES ('${data['input-productTypeID']}', '${data['input-productName']}', '${data['input-productDescription']}', '${data['input-productPrice']}', '${data['input-quantityPerUnit']}')`;
+    VALUES ('${data['input-productType']}', '${data['input-productName']}', '${data['input-productDescription']}', '${data['input-productPrice']}', '${data['input-quantityPerUnit']}')`;
      
     db.pool.query(query1, function(error, rows, fields){
 

@@ -1,5 +1,5 @@
 {{!-- This is the Products page --}}
-
+<link rel="stylesheet" type="text/css"   href="/css/style.css">
 <h1>Products</h1>
 [ <a href="/">Home</a> | <a href="/Customers">Customers</a> |  <a href="/Orders">Orders</a> | <a href="/Products">Products</a> | <a href="/ProductTypes">ProductTypes</a> ]
 
@@ -43,7 +43,7 @@
 <p>To add a new Product, please enter its information below and click `Submit`!</p>
 <form id="add-product-form" method="POST" action="/add-product-form">
     <label for="input-productType">Product Type: </label>
-    <select name="input-productType" id="input-productType-html" required>
+    <select name="input-productType" id="input-productType" required>
         <option value="">Select a Product Type</option>
         {{#each types}}
         <option value="{{this.productTypeID}}">{{this.productType}}</option>
@@ -54,7 +54,7 @@
     <input type="text" name="input-productName" id="input-productName" required>
     <br>
     <label for="input-productDescription">Description: </label>
-    <input type="text" name="input-productName" id="input-productName" required>
+    <input type="text" name="input-productDescription" id="input-productDescription" required>
     <br>
     <label for="input-productPrice">Product Price ($): </label>
     <input type="number" name="input-productPrice" id="input-productPrice" required>
