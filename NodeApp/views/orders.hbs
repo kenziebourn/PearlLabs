@@ -140,7 +140,11 @@
     {{/each}}
   </select>
   <label for="input-productID">Product ID:</label>
-  <input type="number" name="input-productID" id="input-productID" required>
+  <select id="productID" name="productID">
+    {{#each productIDs}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
   <br>
   <label for="input-quantity">Quantity:</label>
   <input type="number" name="input-quantity" id="input-quantity" required>
