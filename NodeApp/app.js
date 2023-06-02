@@ -198,7 +198,7 @@ app.post('/add-order-form', function(req, res){
 });
 
 // Search a Order
-app.get('/search-order-html', function(req, res)
+/**app.get('/search-order-html', function(req, res)
 {
     // Retrieve value of input-customerID query parameter from request's query string
     const customerID = req.query['input-customerID'];
@@ -227,7 +227,7 @@ app.get('/search-order-html', function(req, res)
             }
         });
     }
-});
+});**/
 
 // Delete an Order
 app.post('/delete-order-form', function(req, res) {
