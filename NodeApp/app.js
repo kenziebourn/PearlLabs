@@ -107,57 +107,69 @@ app.get('/search-customer-html', function(req, res)
 
 // Orders Page
 app.get('/Orders', function(req, res) {
-    // Retrieve all information from Orders Table
-    let query1 = "SELECT * FROM Orders;";
-    db.pool.query(query1, function(error, ordersRows, fields) {
-      if (error) {
-        console.log(error);
-        res.sendStatus(500);
-        return;
-      }
-  
-      // Retrieve all information from OrderProducts Table
-      let query2 = "SELECT * FROM OrderProducts;";
-      db.pool.query(query2, function(error, orderProductsRows, fields) {
-        if (error) {
-          console.log(error);
-          res.sendStatus(500);
-          return;
-        }
-  
-      // Retrieve current orderIDs from OrderProducts Table
-        let selectQuery = "SELECT DISTINCT orderID FROM OrderProducts;";
-        db.pool.query(selectQuery, function(selectError, selectResults1) {
-          if (selectError) {
-            console.error('Error retrieving orderIDs:', selectError);
-            res.sendStatus(500); // Send HTTP response 500 for internal server error
-            return;
-          }
-     // Retrieve distinct productIDs from OrderProducts Table
-        let selectQuery2 = "SELECT DISTINCT productID FROM OrderProducts;";
-        db.pool.query(selectQuery2, function(selectError2, selectResults2) {
-          if (selectError2) {
-            console.error('Error retrieving productIDs:', selectError2);
-            res.sendStatus(500); // Send HTTP response 500 for internal server error
-            return;
-          }
-          const orderIDs = selectResults1.map((row) => row.orderID); // represents the orderID's currently in the database
-          const productIDs = selectResults2.map((row) => row.productID); // represents the distinct productIDs currently in the database
-          console.log(orderIDs)
-          console.log(productIDs)
+            // Retrieve all information from Orders Table
+            let query1 = "SELECT * FROM Orders;";
+            db.pool.query(query1, function(error, ordersRows, fields) {
+            if (error) {
+                console.log(error);
+                res.sendStatus(500);
+                return;
+            }
+        
+            // Retrieve all information from OrderProducts Table
+            let query2 = "SELECT * FROM OrderProducts;";
+            db.pool.query(query2, function(error, orderProductsRows, fields) {
+                if (error) {
+                console.log(error);
+                res.sendStatus(500);
+                return;
+                }
+        
+            // Retrieve current orderIDs from OrderProducts Table
+                let selectQuery = "SELECT DISTINCT orderID FROM OrderProducts;";
+                db.pool.query(selectQuery, function(selectError, selectResults1) {
+                if (selectError) {
+                    console.error('Error retrieving orderIDs:', selectError);
+                    res.sendStatus(500); // Send HTTP response 500 for internal server error
+                    return;
+                }
+            // Retrieve distinct productIDs from OrderProducts Table
+                let selectQuery2 = "SELECT DISTINCT productID FROM OrderProducts;";
+                db.pool.query(selectQuery2, function(selectError2, selectResults2) {
+                if (selectError2) {
+                    console.error('Error retrieving productIDs:', selectError2);
+                    res.sendStatus(500); // Send HTTP response 500 for internal server error
+                    return;
+                }
 
-          res.render('orders', {
-            ordersData: ordersRows,
-            orderProductsData: orderProductsRows,
-            orderIDs: orderIDs,
-            productIDs: productIDs
-          });
-        });
-      });
+            // Retrieve current customerIDs from Customers table
+                let selectQuery3 = "SELECT DISTINCT customerID FROM Customers;";
+                db.pool.query(selectQuery3, function(selectError3, selectResults3) {
+                if (selectError3) {
+                    console.error('Error retrieving productIDs:', selectError3);
+                    res.sendStatus(500); // Send HTTP response 500 for internal server error
+                    return;
+                }
+                const orderIDs = selectResults1.map((row) => row.orderID); // represents the orderID's currently in the database
+                const productIDs = selectResults2.map((row) => row.productID); // represents the distinct productIDs currently in the database
+                const customerIDs = selectResults3.map((row) => row.customerID); // represents the customerID's currently in the database
+                console.log(orderIDs)
+                console.log(productIDs)
+                console.log(customerIDs)
+
+                res.render('orders', {
+                    ordersData: ordersRows,
+                    orderProductsData: orderProductsRows,
+                    orderIDs: orderIDs,
+                    productIDs: productIDs,
+                    customerIDs: customerIDs
+                        });
+                    });
+                });
+            });
+         });
     });
-  });
 });
-
 // Add an Order
 app.post('/add-order-form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
