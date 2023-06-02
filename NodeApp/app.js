@@ -133,9 +133,18 @@ app.get('/Orders', function(req, res) {
             res.sendStatus(500); // Send HTTP response 500 for internal server error
             return;
           }
-          
-          const orderIDs = selectResults.map((row) => row.orderID); // represents the orderID's currently in the database
+     // Retrieve distinct productIDs from OrderProducts Table
+        let selectQuery2 = "SELECT DISTINCT productID FROM OrderProducts;";
+        db.pool.query(selectQuery2, function(selectError2, selectResults2) {
+          if (selectError2) {
+            console.error('Error retrieving productIDs:', selectError2);
+            res.sendStatus(500); // Send HTTP response 500 for internal server error
+            return;
+          }
+          const orderIDs = selectResults1.map((row) => row.orderID); // represents the orderID's currently in the database
+          const productIDs = selectResults2.map((row) => row.productID); // represents the distinct productIDs currently in the database
           console.log(orderIDs)
+          console.log(productIDs)
 
           res.render('orders', {
             ordersData: ordersRows,
