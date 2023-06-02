@@ -178,8 +178,8 @@ app.post('/add-order-form', function(req, res){
 
     // Create the query and run it on the database
     query1 = `INSERT INTO Orders (customerID, orderDate, orderPrice) 
-    VALUES (${data['input-customerID']}, '${data['input-orderDate']}', ${data['input-orderPrice']})`;
-     
+    VALUES (${data['customerID']}, '${data['input-orderDate']}', ${data['input-orderPrice']})`;
+    console.log(query1)
     db.pool.query(query1, function(error, rows, fields){
 
         // Check to see if there was an error
