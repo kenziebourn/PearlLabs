@@ -108,7 +108,7 @@ app.get('/search-customer-html', function(req, res)
 // Orders Page
 app.get('/Orders', function(req, res) {
             // Retrieve all information from Orders Table
-            let query1 = "SELECT * FROM Orders;";
+            let query1 = "SELECT orderID, customerID, cast(orderDate as varchar(10)) as orderDate, orderPrice FROM Orders;";
             db.pool.query(query1, function(error, ordersRows, fields) {
             if (error) {
                 console.log(error);
