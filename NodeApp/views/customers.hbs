@@ -51,30 +51,32 @@
 <h2>Add a Customer</h2>
 <p>To add a new Customer, please enter their information below and click `Submit`!</p>
 <form id="add-customer-form" method="POST" action="/add-customer-form">
+ <div class="form-row">
     <label for="input-fname">First Name: </label>
     <input type="text" name="input-fname" id="input-fname" required>
-    <br>
+    
     <label for="input-lname">Last Name: </label>
     <input type="text" name="input-lname" id="input-lname" required>
-    <br>
+    
     <label for="input-streetAddress">Street Address: </label>
     <input type="text" name="input-streetAddress" id="input-streetAddress" required>
-    <br>
+   
     <label for="input-city">City: </label>
     <input type="text" name="input-city" id="input-city" required>
-    <br>
+   </div>
+    <div class="form-row">
     <label for="input-state">State: </label>
     <input type="text" name="input-state" id="input-state" required>
-    <br>
+    
     <label for="input-zipcode">Zipcode: </label>
     <input type="number" name="input-zipcode" id="input-zipcode" required>
-    <br>
+    
     <label for="input-phoneNumber">Phone Number: </label>
     <input type="text" name="input-phoneNumber" id="input-phoneNumber" required>
-    <br>
+    
     <label for="input-email">Email: </label>
     <input type="text" name="input-email" id="input-email" required>
-    <br>
+    </div>
     <input type="submit">
 </form> 
 
@@ -83,7 +85,7 @@
 <p>To search for a customer, please enter their customer ID</p>
 <form id="search-customer-html" method='GET' action='/search-customer-html'>
     <label for="input-customerID">Search by ID: </label>
-    <input type="text" name="input-customerID" id="input-customerID-html-search" min=1 required>
+    <input type="text" name="input-customerID" id="input-customerID-html-search" min=1>
     
     <input type="submit">
     <a href='/Customers'><button>Reset</button></a>

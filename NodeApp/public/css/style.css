@@ -52,3 +52,12 @@ body {
   }
     tr:nth-child(even) td {background-color: var(--light-blue);}
     tr:nth-child(odd) td {background-color: var(--lightest-blue);}
+
+  .form-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+  }
+
+  
