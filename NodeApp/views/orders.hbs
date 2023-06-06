@@ -38,8 +38,12 @@
 <h2>Add an Order</h2>
 <p>To add a new Order, please enter its information below and click `Submit`!</p>
 <form id="add-order-form" method="POST" action="/add-order-form">
-    <label for="input-customerID">Customer ID: </label>
-    <input type="number" name="input-customerID" id="input-customerID" min=1 required>
+    <label for="customerID">Customer ID:</label>
+  <select id="customerID" name="customerID">
+    {{#each customerIDs}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
     <br>
     <label for="input-orderDate">Order Date: </label>
     <input type="date" name="input-orderDate" id="input-orderDate" required>
@@ -51,7 +55,7 @@
 </form> 
 
 {{!-- Search for a Order by customerID using HTML Form--}}
-<h2>Search an Order</h2>
+{{!<h2>Search an Order</h2>
 <p>To search for a customer's orders, please enter their customer ID</p>
 <form id="search-order-html" method='GET' action='/search-order-html'>
     <label for="input-customerID">Search by ID: </label>
@@ -59,7 +63,7 @@
     
     <input type="submit">
     <a href='/Orders'><button>Reset</button></a>
-</form>
+</form>}}
 
 
 {{!-- Delete an Order by orderID using HTML Form --}}
@@ -139,7 +143,7 @@
       <option value="{{this}}">{{this}}</option>
     {{/each}}
   </select>
-  <label for="input-productID">Product ID:</label>
+  <label for="productID">Product ID:</label>
   <select id="productID" name="productID">
     {{#each productIDs}}
       <option value="{{this}}">{{this}}</option>
