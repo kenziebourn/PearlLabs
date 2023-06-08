@@ -54,7 +54,7 @@ CREATE OR REPLACE TABLE `OrderProducts` (
 
 -- Create ProductTypes table
 CREATE OR REPLACE TABLE `ProductTypes` (
-    `productTypeID` int(11) NOT NULL,
+    `productTypeID` int(11) NOT NULL AUTO_INCREMENT,
     `productType` varchar(50) NOT NULL,
     `productTypeDescription` text NOT NULL,
     PRIMARY KEY (`productTypeID`)
