@@ -150,19 +150,33 @@ app.get('/Orders', function(req, res) {
                     res.sendStatus(500); // Send HTTP response 500 for internal server error
                     return;
                 }
-                const orderIDs = selectResults1.map((row) => row.orderID); // represents the orderID's currently in the database
+
+            // Retrieve all productIDs from Products table
+                let selectQuery4 = "SELECT DISTINCT productID FROM Products;";
+                db.pool.query(selectQuery4, function(selectError4, selectResults4) {
+                if (selectError4) {
+                    console.error('Error retrieving productIDs:', selectError4);
+                    res.sendStatus(500); // Send HTTP response 500 for internal server error
+                    return;
+                }
+
+                const orderIDs = selectResults1.map((row) => row.orderID); // represents the orderIDs currently in the database
                 const productIDs = selectResults2.map((row) => row.productID); // represents the distinct productIDs currently in the database
-                const customerIDs = selectResults3.map((row) => row.customerID); // represents the customerID's currently in the database
+                const customerIDs = selectResults3.map((row) => row.customerID); // represents the customerIDs currently in the database
+                const allProductIDs = selectResults4.map((row) => row.productID); // represents all the productIDs currently in the database
                 console.log(orderIDs)
                 console.log(productIDs)
                 console.log(customerIDs)
+                console.log(allProductIDs)
 
                 res.render('orders', {
                     ordersData: ordersRows,
                     orderProductsData: orderProductsRows,
                     orderIDs: orderIDs,
                     productIDs: productIDs,
-                    customerIDs: customerIDs
+                    customerIDs: customerIDs,
+                    allProductIDs: allProductIDs
+                            });
                         });
                     });
                 });
@@ -254,7 +268,7 @@ app.post('/add-ordered-product-form', function(req, res){
 
     // Create the query and run it on the database
     query1 = `INSERT INTO OrderProducts (orderID, productID, quantity, discount)
-    VALUES ('${data['input-orderID']}', '${data['input-productID']}', '${data['input-quantity']}', '${data['input-discount']}')`;
+    VALUES ('${data['orderID']}', '${data['productID']}', '${data['input-quantity']}', '${data['input-discount']}')`;
      
     db.pool.query(query1, function(error, rows, fields){
 

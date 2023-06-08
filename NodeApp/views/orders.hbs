@@ -117,11 +117,18 @@
 <h2>Add an Ordered Product</h2>
 <p>To add an ordered product, please enter its information below and click `Submit`!</p>
 <form id="add-ordered-product-form" method="POST" action="/add-ordered-product-form">
-    <label for="input-orderID">Order ID: </label>
-    <input type="number" name="input-orderID" id="input-orderID" min=1 required>
-    <br>
+    <label for="orderID">Order ID: </label>
+    <select id="orderID" name="orderID">
+    {{#each orderIDs}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    </select>
     <label for="input-productID">Product ID: </label>
-    <input type="number" name="input-productID" id="input-productID" min=1 required>
+    <select id="productID" name="productID">
+    {{#each allProductIDs}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    </select>
     <br>
     <label for="input-quantity">Quantity: </label>
     <input type="number" name="input-quantity" id="input-quantity" min=1 required>
