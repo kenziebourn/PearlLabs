@@ -1,3 +1,9 @@
+/*
+Based on sample queries and information from CS340 Canvas modules
+Safonte, D & Curry, M (April 2023)
+Source URL: https://canvas.oregonstate.edu/courses/1914747
+*/
+
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT=0;
 
